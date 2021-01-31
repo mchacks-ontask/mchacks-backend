@@ -54,7 +54,6 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
           newMember.setChannel(m.id); // Moves the user to the new private voice channel.
           console.log(userID);
           Tracker.addHuman({ username, discord_room: m.id, userID }, (done) => {
-            if (!done) return res.json({ success: false });
 
             Tasks.assignTask(username, (task) => {
               client.users.cache.get(userID).send(`Your task is ${task.task_name} and you must ${task.description}... its estimation is around ${task.estimation}`);
@@ -71,38 +70,19 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
       });
   }
 
-  // Triggered if user leaves the server.
-  // if (oldMember.channel != null && oldMember.channel.name === userTag) {
-  //   client.channels.cache.get(oldChannel).delete(); // Deletes the user's private voice channel
-  // }
+  //  Triggered if user leaves the server.
+  if (oldMember.channel != null && oldMember.channel.name === userTag) {
+    client.channels.cache.get(oldChannel).delete(); // Deletes the user's private voice channel
+  }
 });
 
-// ------------------------------------------------- Broken stuff in here
+
 client.on("message", (message) => {
-  let secretWord = "horses";
-  if (
-    message.channel.type !== "dm" &&
-    !message.member.hasPermission("ADMINISTRATOR")
-  ) {
-    message.channel
-      .send("Horses are my friend!", {
-        tts: true,
-      })
-      .then(
-        client.channels.cache.forEach((channel) => {
-          channel.members.forEach((member) => {
-            member.send("What word did you hear?");
-          });
-        })
-      );
-  }
   if (message.channel.type === "dm") {
-    if (message === secretWord) {
-      message.author.id.send("Noice!");
-    }
+    let input = message.content;
+    console.log(input);
   }
 });
-// -------------------------------------------------
 
 // Get your bot's secret token from:
 // https://discordapp.com/developers/applications/
