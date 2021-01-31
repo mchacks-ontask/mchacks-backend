@@ -69,7 +69,8 @@ class Tracker {
 
   scheduleUserTask(username, task) {
     this.humans[username].job = new CronJob(this.calculateTimer(task.estimation || 1), () => {
-      logit('CRON', `Will send reminder every ${task.estimation} minutes`, 'cron');
+      logit('Sending word quiz to ' + username, 'info');
+      require('./wordcheckup').testParticipants();
     }, null, true, 'America/Los_Angeles');
 
     this.humans[username].job.start();

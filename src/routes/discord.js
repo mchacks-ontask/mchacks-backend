@@ -18,6 +18,8 @@ router.get('/', (req, res) => {
       }
 
       Tracker.scheduleUserTask(username, task);
+
+      return res.status(200);
     })
   });
 })
