@@ -22,6 +22,8 @@ class Tasks {
         this.tasks[id].assignee = username;
         return done(current);
       }
+
+      index++;
     }
 
     return done(false);

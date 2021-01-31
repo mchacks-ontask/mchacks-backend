@@ -15,7 +15,7 @@ module.exports.makeGlobalLogger = (name, msg, type) => {
 			break;
 		case 'warning':
 			console.log(
-				chalk.orange(`${new Date().toLocaleTimeString()} - [${name}] ${msg}`),
+				chalk.yellow(`${new Date().toLocaleTimeString()} - [${name}] ${msg}`),
 			);
 			break;
 		case 'info':
