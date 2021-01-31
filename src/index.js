@@ -33,4 +33,4 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/discord',   require('./routes/discord'));
+require('./services/discord');
