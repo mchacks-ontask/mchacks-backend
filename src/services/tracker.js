@@ -6,6 +6,7 @@ class Human {
     this.username       = "";
     this.notes          = "";
     this.discord_room   = null;
+    this.userID         = "";
     this.job;
   }
 }
@@ -26,6 +27,7 @@ class Tracker {
     
     newHuman.name         = data.name;
     newHuman.discord_room = data.discord_room;
+    newHuman.userID       = data.userID;
     newHuman.job;
 
     return newHuman;
@@ -67,10 +69,10 @@ class Tracker {
     }
   }
 
-  scheduleUserTask(username, task) {
+  scheduleUserTask(username, task, client, textChannel) {
     this.humans[username].job = new CronJob(this.calculateTimer(task.estimation || 1), () => {
       logit('Sending word quiz to ' + username, 'info');
-      require('./wordcheckup').testParticipants();
+      require('./wordcheckup').testParticipants(client, this.humans[username].userID, textChannel);
     }, null, true, 'America/Los_Angeles');
 
     this.humans[username].job.start();

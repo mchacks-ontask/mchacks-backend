@@ -1,6 +1,7 @@
 const example_tasks = {
-  3423: { task_name: "Do this and that", estimation : 1, assignee: null, description: 'i need this done' },
-  32131: { task_name: "And then this for that?", estimation : 2, assignee: null, description: 'i need this adawdad' }
+  3423: { task_name: "Create random boxes around the map", estimation : 1, assignee: null, description: 'We need a few random boxes' },
+  32131: { task_name: "Fix the mcgill website", estimation : 2, assignee: null, description: 'Its broken right now' },
+  2222: { task_name: "A third task.. idk what to put tho", estimation : 2, assignee: null, description: 'Yeah yeah.' }
 }
 
 class Tasks {

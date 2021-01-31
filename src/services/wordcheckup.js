@@ -12,9 +12,16 @@ class WordCheckup {
     return done(word);
   }
 
-  testParticipants() {
+  testParticipants(client, userID, textChannel) {
     this.pickRandomWord((word) => {
-      // Send word to discord participants here...
+        client.channels.cache
+        .get(textChannel)
+        .send(word, { tts: true }).then(msg => {
+          msg.delete({timeout : 2000});
+        });
+
+        client.users.cache.get(userID).send(`What was the secret word I just said?`);
+        
     });
   }
 }
