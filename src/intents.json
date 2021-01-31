@@ -1,0 +1,59 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi","Hey","How are you","Is anyone there?","Hello","Good day"],
+      "responses": ["Hey :-)","Hello, thanks for visiting","Hi there, what can I do for you?","Hi there, how can I help?"]
+    },
+
+
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": ["See you later, thanks for visiting","Have a nice day","Bye! Come back again soon."]
+    },
+
+
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+
+
+    {
+        "tag": "changePriority",
+        "patterns": ["switch priority", "switch task", "I want to change task", "i want to update priority", "change priority", "update task priority"],
+        "responses": ["Ok changing priority", "Alright then new priority coming up", "Awesome, handled your priority request", "Perfect, we're changing your task"]
+    },
+
+
+    {
+      "tag": "finishTask",
+      "patterns": ["End task","Finish task","Finish task","I'm finished my task","completed task","I've completed task","done with the task",
+        "done priority","finished priority","ended priority","done finishing this task"],
+      "responses": ["Got it! Your task has been marked as finished.","Good job on completing your task!"]
+    },
+
+
+    {
+      "tag": "helpRequest",
+      "patterns": ["I need help with task","Help please","I want help","Can help me","Can you help me?","Help is needed",
+        "I need help with task","Help please","Help","I need help with task","I need help with a task","I need help"
+      ],
+      "responses": ["Alright, we've let your manager and team know that you need help with the task.","Ok got it, we've notified your team that you need help with this task."]
+    },
+
+
+    {
+      "tag": "newTask",
+      "patterns": ["new task","create new task","add new task","add task","make task","I'd like to make a new priority","new priority","another task",
+        "want to make a new priority","another task"
+      ],
+      "responses": ["Created task!","All done creating the task!"]
+    }
+
+
+
+  ]
+}

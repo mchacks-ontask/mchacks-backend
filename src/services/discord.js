@@ -54,9 +54,12 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
           newMember.setChannel(m.id); // Moves the user to the new private voice channel.
           console.log(userID);
           Tracker.addHuman({ username, discord_room: m.id, userID }, (done) => {
-
             Tasks.assignTask(username, (task) => {
-              client.users.cache.get(userID).send(`Your task is ${task.task_name} and you must ${task.description}... its estimation is around ${task.estimation}`);
+              client.users.cache
+                .get(userID)
+                .send(
+                  `Your task is ${task.task_name} and you must ${task.description}... its estimation is around ${task.estimation}`
+                );
 
               if (!task) {
                 console.log("no tasks to do...");
@@ -76,11 +79,16 @@ client.on("voiceStateUpdate", (oldMember, newMember) => {
   }
 });
 
-
 client.on("message", (message) => {
   if (message.channel.type === "dm") {
     let input = message.content;
     console.log(input);
+    var spawn = require("child_process").spawn;
+    var process = spawn("python3", ["./chat.py", input]);
+    process.stdout.on("data", function (data) {
+      console.log(data.toString());
+      client.users.cache.get(message.author.id).send(data.toString());
+    });
   }
 });
 
