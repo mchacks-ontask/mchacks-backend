@@ -80,7 +80,7 @@ class Tracker {
 
   removeUserTask(username) {
     logit('CRON', `Ending user ${username} cron job.`, 'cron');
-    this.humans[username].job?.stop();
+    this.humans[username].job.stop();
   }
 }
 
